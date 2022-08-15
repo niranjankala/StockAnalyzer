@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Framework", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.WebApi", "StockAnalyzer.WebApi\StockAnalyzer.WebApi.csproj", "{A76D655E-90A5-43B6-A76A-E5E22D71D375}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.WebApi.Tests", "Tests\StockAnalyzer.WebApi.Tests\StockAnalyzer.WebApi.Tests.csproj", "{2096EC72-FF57-4DB3-A48D-247EE302AA4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,9 +25,16 @@ Global
 		{A76D655E-90A5-43B6-A76A-E5E22D71D375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A76D655E-90A5-43B6-A76A-E5E22D71D375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A76D655E-90A5-43B6-A76A-E5E22D71D375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2096EC72-FF57-4DB3-A48D-247EE302AA4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2096EC72-FF57-4DB3-A48D-247EE302AA4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2096EC72-FF57-4DB3-A48D-247EE302AA4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2096EC72-FF57-4DB3-A48D-247EE302AA4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2096EC72-FF57-4DB3-A48D-247EE302AA4A} = {0BEE5C10-2003-4811-A229-FEAC0A8C0E63}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E2A7B850-B5F4-4397-9E60-D59756CD7B72}
