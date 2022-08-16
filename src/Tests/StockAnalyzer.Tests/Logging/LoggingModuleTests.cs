@@ -2,7 +2,6 @@
 using StockAnalyzer.Logging;
 using log4net.Appender;
 using log4net.Core;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
@@ -10,10 +9,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ILogger = StockAnalyzer.Logging.ILogger;
+using NUnit.Framework;
 
 namespace StockAnalyzer.Tests.Logging
 {
-    [TestClass]
+    [TestFixture]
     public class LoggingModuleTests
     {
         public LoggingModuleTests()
@@ -21,7 +21,7 @@ namespace StockAnalyzer.Tests.Logging
             Serilog.Log.Logger = new LoggerConfiguration().WriteTo.Sink(
                   new InMemorySink()).CreateLogger();
         }
-        [TestMethod]
+        [Test]
         public void LoggingModuleWillSetLoggerProperty()
         {
             ContainerBuilder builder = new ContainerBuilder();
@@ -32,7 +32,7 @@ namespace StockAnalyzer.Tests.Logging
             Assert.IsNotNull(loggerService.Logger);
         }
 
-        [TestMethod]
+        [Test]
         public void LoggerFactoryIsPassedTheTypeOfTheContainingInstance()
         {
             ContainerBuilder builder = new ContainerBuilder();
@@ -45,7 +45,7 @@ namespace StockAnalyzer.Tests.Logging
             Assert.IsNotNull(loggerService.Logger);
             Assert.AreEqual(stubFactory.CalledType, typeof(StubLogger));
         }
-        [TestMethod]
+        [Test]
         public void GivenErrorMessageIsLoggedAndAssertingError()
         {
             Assert.IsNotNull(InMemorySink.Messages);
@@ -55,7 +55,7 @@ namespace StockAnalyzer.Tests.Logging
             Assert.IsTrue(InMemorySink.Messages.FirstOrDefault().Contains("error"));
         }
 
-        [TestMethod]
+        [Test]
         public void GivenWarningMessageIsLoggedAndAssertingWarning()
         {
             Assert.IsNotNull(InMemorySink.Messages);
@@ -68,7 +68,7 @@ namespace StockAnalyzer.Tests.Logging
             Assert.IsTrue(result.Contains("ApplicationException"));
         }
 
-        //[TestMethod]
+        //[Test]
         public void DefaultLoggerConfigurationUsesCastleLoggerFactoryOverTraceSource()
         {
             #region

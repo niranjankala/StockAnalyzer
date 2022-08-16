@@ -12,14 +12,14 @@ using NUnit.Framework;
 namespace StockAnalyzer.Tests.FileStorage.FileSystem
 {
     [TestFixture]
-    public class FileSystemStoreTests : IDisposable
+    public class FileSystemStoreTests
     {
         private string filePath;
         private string folderPath;
         private IFileStore storageProvider;
-
-
-        public FileSystemStoreTests()
+        
+        [OneTimeSetUp]
+        public void Setup()
         {
             folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Media");
             filePath = folderPath + "\\testfile.txt";
@@ -49,18 +49,17 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
 
             storageProvider = new FileSystemStore(folderPath);
 
-
         }
 
         [Test]
-        public async Task ExistsShouldBeTrueForExtistingFile()
+        public async Task ExistsShouldBeTrueForExistingFile()
         {
             var result = await storageProvider.GetFileInfoAsync("testfile.txt");
             Assert.NotNull(result);
         }
 
         [Test]
-        public async Task ExistsShouldBeFalseForNonExtistingFile()
+        public async Task ExistsShouldBeFalseForNonExistingFile()
         {
             Assert.Null(await storageProvider.GetFileInfoAsync("notexisting"));
         }
@@ -89,7 +88,7 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
 
         }
 
-        [Test][Ignore("")]
+        [Test]
         public async Task GetDirectoryContentAsync_WithInvalidPath_ShouldReturnNull()
         {
             // Arrange
@@ -111,13 +110,12 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
         {
             Directory.Delete(folderPath, true);
             await storageProvider.TryCreateDirectoryAsync("foo/bar/baz");
-            Assert.Equalss((await ListFolders("")).Count(), 1);
-            Assert.Equals((await ListFolders("foo")).Count(), 1);
-            Assert.Equals((await ListFolders("foo/bar")).Count(), 1);
+            Assert.AreEqual((await ListFolders("")).Count(), 1);
+            Assert.AreEqual((await ListFolders("foo")).Count(), 1);
+            Assert.AreEqual((await ListFolders("foo/bar")).Count(), 1);
         }
 
-        [Test]
-        [Ignore("")]
+        [Test]       
         public async Task TryCreateDirectoryAsync_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
@@ -145,7 +143,7 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
             Assert.Null(await storageProvider.GetDirectoryInfoAsync("SubFolder1"));
         }
 
-        [Test][Ignore("")]
+        [Test]
         public async Task TryDeleteDirectoryAsync_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
@@ -161,7 +159,7 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
 
         }
 
-        [Test][Ignore("")]
+        [Test]
         public async Task MoveFileAsync_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
@@ -179,7 +177,7 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
 
         }
 
-        [Test][Ignore("")]
+        [Test]
         public async Task CopyFileAsync_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
@@ -197,7 +195,7 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
 
         }
 
-        [Test][Ignore("")]
+        [Test]
         public async Task GetFileStreamAsync_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
@@ -213,7 +211,7 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
 
         }
 
-        [Test][Ignore("")]
+        [Test]
         public async Task GetFileStreamAsync_StateUnderTest_ExpectedBehavior1()
         {
             // Arrange
@@ -229,7 +227,7 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
 
         }
 
-        [Test][Ignore("")]
+        [Test]
         public async Task CreateFileFromStreamAsync_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
@@ -248,12 +246,14 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
             Assert.True(false);
 
         }
-
+        
+        [OneTimeTearDown]
         public void Dispose()
         {
             try
             {
-                Directory.Delete(folderPath, true);
+                if(Directory.Exists(folderPath))
+                    Directory.Delete(folderPath, true);
             }
             catch (IOException)
             {

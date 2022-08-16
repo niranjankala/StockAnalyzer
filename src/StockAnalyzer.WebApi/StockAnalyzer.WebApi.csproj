@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>
     </CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Pegasus_BimManager_API.xml</DocumentationFile>
+    <DocumentationFile>bin\StockAnalyser_API.xml</DocumentationFile>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -51,14 +51,17 @@
     <DocumentationFile>bin\Pegasus_BimManager_API.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=5.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.5.2.0\lib\net461\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac.Integration.WebApi, Version=4.3.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.WebApi2.4.3.1\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    <Reference Include="Autofac.Integration.WebApi, Version=5.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.5.0.0\lib\net461\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Esent.Interop, Version=1.9.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\ManagedEsent.1.9.4\lib\net40\Esent.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -104,7 +107,8 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serilog.2.8.0\lib\net46\Serilog.dll</HintPath>
+      <HintPath>..\packages\Serilog.2.11.0\lib\net46\Serilog.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Serilog.Extensions.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\packages\Serilog.Extensions.Logging.3.0.1\lib\netstandard2.0\Serilog.Extensions.Logging.dll</HintPath>
@@ -130,6 +134,7 @@
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Configuration.ConfigurationManager.4.5.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
@@ -195,33 +200,6 @@
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
-    <Reference Include="Xbim.Common, Version=5.1.0.0, Culture=neutral, PublicKeyToken=11e3655e576ec5a9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xbim.Common.5.1.267\lib\net47\Xbim.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Xbim.Geometry.Engine.Interop, Version=5.1.0.0, Culture=neutral, PublicKeyToken=11e3655e576ec5a9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xbim.Geometry.Engine.Interop.5.1.254\lib\net47\Xbim.Geometry.Engine.Interop.dll</HintPath>
-    </Reference>
-    <Reference Include="Xbim.Ifc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=11e3655e576ec5a9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xbim.Ifc.5.1.267\lib\net47\Xbim.Ifc.dll</HintPath>
-    </Reference>
-    <Reference Include="Xbim.Ifc2x3, Version=5.1.0.0, Culture=neutral, PublicKeyToken=11e3655e576ec5a9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xbim.Ifc2x3.5.1.267\lib\net47\Xbim.Ifc2x3.dll</HintPath>
-    </Reference>
-    <Reference Include="Xbim.Ifc4, Version=5.1.0.0, Culture=neutral, PublicKeyToken=11e3655e576ec5a9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xbim.Ifc4.5.1.267\lib\net47\Xbim.Ifc4.dll</HintPath>
-    </Reference>
-    <Reference Include="Xbim.IO.Esent, Version=5.1.0.0, Culture=neutral, PublicKeyToken=11e3655e576ec5a9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xbim.IO.Esent.5.1.267\lib\net47\Xbim.IO.Esent.dll</HintPath>
-    </Reference>
-    <Reference Include="Xbim.IO.MemoryModel, Version=5.1.0.0, Culture=neutral, PublicKeyToken=11e3655e576ec5a9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xbim.IO.MemoryModel.5.1.267\lib\net47\Xbim.IO.MemoryModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Xbim.ModelGeometry.Scene, Version=5.1.0.0, Culture=neutral, PublicKeyToken=11e3655e576ec5a9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xbim.ModelGeometry.Scene.5.1.254\lib\net47\Xbim.ModelGeometry.Scene.dll</HintPath>
-    </Reference>
-    <Reference Include="Xbim.Tessellator, Version=5.1.0.0, Culture=neutral, PublicKeyToken=11e3655e576ec5a9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xbim.Tessellator.5.1.267\lib\net47\Xbim.Tessellator.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\swagger.css" />
@@ -235,8 +213,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\ProjectsController.cs" />
-    <Compile Include="Controllers\SmartPlanLibrariesController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,33 +249,17 @@
     <Folder Include="Media\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pegasus.BimManager.Business\Pegasus.BimManager.Business.csproj">
-      <Project>{f3baec4c-5b2d-418d-a836-1ee78c0ad1fd}</Project>
-      <Name>Pegasus.BimManager.Business</Name>
+    <ProjectReference Include="..\StockAnalyzer.Models\StockAnalyzer.Models.csproj">
+      <Project>{ec4c27a9-a198-4176-8d68-986b1dea22c5}</Project>
+      <Name>StockAnalyzer.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pegasus.BimManager.Common\Pegasus.BimManager.Common.csproj">
-      <Project>{a47c6d4a-10bd-44a8-931d-b1bbfb4b26d1}</Project>
-      <Name>Pegasus.BimManager.Common</Name>
+    <ProjectReference Include="..\StockAnalyzer.Services\StockAnalyzer.Services.csproj">
+      <Project>{f92d03e2-7655-4970-9968-3ac65fdac0b2}</Project>
+      <Name>StockAnalyzer.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pegasus.BimManager.Contracts\Pegasus.BimManager.Contracts.csproj">
-      <Project>{0b97c6c0-6579-4867-9e6a-1eab70104301}</Project>
-      <Name>Pegasus.BimManager.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pegasus.BimManager.Libraries\Pegasus.BimManager.Libraries.csproj">
-      <Project>{FA80BDB3-0A60-4981-A859-DA4688E4E6C9}</Project>
-      <Name>Pegasus.BimManager.Libraries</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pegasus.BimManager.Logging\Pegasus.BimManager.Logging.csproj">
-      <Project>{21292ec1-1db9-4646-a6a9-5249c96728f1}</Project>
-      <Name>Pegasus.BimManager.Logging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pegasus.BimManager.Models\Pegasus.BimManager.Models.csproj">
-      <Project>{62f1bcc6-d68e-41a0-a4d9-059833e033e7}</Project>
-      <Name>Pegasus.BimManager.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pegasus.BimManager.Services\Pegasus.BimManager.Services.csproj">
-      <Project>{64ac1b24-0ab4-44f5-a35b-2cd57d18047b}</Project>
-      <Name>Pegasus.BimManager.Services</Name>
+    <ProjectReference Include="..\StockAnalyzer\StockAnalyzer.Framework.csproj">
+      <Project>{BCDAA140-6947-4301-8C57-FD69722755AB}</Project>
+      <Name>StockAnalyzer.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -336,16 +297,15 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\Dependencies\Xbim.Geometry.Engine.Interop\build\Xbim.Geometry.Engine.Interop.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Dependencies\Xbim.Geometry.Engine.Interop\build\Xbim.Geometry.Engine.Interop.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>del "$(SolutionDir)Dependencies\Build_$(PlatformName)\Xbim.Geometry.Engine*.dll"
-copy "$(SolutionDir)Dependencies\Build_$(PlatformName)\*.*" "$(TargetDir)"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
-  <Import Project="..\Dependencies\Xbim.Geometry.Engine.Interop\build\Xbim.Geometry.Engine.Interop.targets" Condition="Exists('..\Dependencies\Xbim.Geometry.Engine.Interop\build\Xbim.Geometry.Engine.Interop.targets')" />
   <PropertyGroup>
-    <PreBuildEvent>del "$(TargetDir)Xbim.Geometry.Engine*.dll"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

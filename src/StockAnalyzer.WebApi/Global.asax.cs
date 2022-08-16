@@ -1,9 +1,9 @@
 ﻿using StockAnalyzer.WebApi.Utilities;
-using StockAnalyzer.Common.Helpers;
 using System;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using StockAnalyzer.Utils;
 
 namespace StockAnalyzer.WebApi
 {
@@ -18,7 +18,7 @@ namespace StockAnalyzer.WebApi
         /// </summary>
         protected void Application_Start()
         {
-            Environment.SetEnvironmentVariable("BASEDIR", PathHelper.GetRootedPath(), EnvironmentVariableTarget.Process);
+            //Environment.SetEnvironmentVariable("BASEDIR", PathHelper.GetRootedPath(), EnvironmentVariableTarget.Process);
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
         /// <summary>
