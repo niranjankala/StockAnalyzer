@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Entities", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Data", "StockAnalyzer.Data\StockAnalyzer.Data.csproj", "{F102026C-3DA8-4E8F-960C-AEB0AE0123F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Repositories.Tests", "Tests\StockAnalyzer.Repositories.Tests\StockAnalyzer.Repositories.Tests.csproj", "{47C6887B-61CB-4983-B51C-EC399F7B569A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{F102026C-3DA8-4E8F-960C-AEB0AE0123F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F102026C-3DA8-4E8F-960C-AEB0AE0123F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F102026C-3DA8-4E8F-960C-AEB0AE0123F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47C6887B-61CB-4983-B51C-EC399F7B569A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47C6887B-61CB-4983-B51C-EC399F7B569A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47C6887B-61CB-4983-B51C-EC399F7B569A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47C6887B-61CB-4983-B51C-EC399F7B569A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{8EDF4429-251A-416D-BB68-93F227191BCF} = {0BEE5C10-2003-4811-A229-FEAC0A8C0E63}
 		{A041B819-B80D-4677-B303-53710D12B311} = {0BEE5C10-2003-4811-A229-FEAC0A8C0E63}
 		{6AEDAB05-0F69-4A3E-87E0-BA1A7D7B7780} = {0BEE5C10-2003-4811-A229-FEAC0A8C0E63}
+		{47C6887B-61CB-4983-B51C-EC399F7B569A} = {0BEE5C10-2003-4811-A229-FEAC0A8C0E63}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E2A7B850-B5F4-4397-9E60-D59756CD7B72}

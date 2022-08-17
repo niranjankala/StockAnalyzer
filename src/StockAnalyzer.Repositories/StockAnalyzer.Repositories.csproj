@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\Class1.cs" />
+    <Compile Include="Contracts\IStockRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="StockRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

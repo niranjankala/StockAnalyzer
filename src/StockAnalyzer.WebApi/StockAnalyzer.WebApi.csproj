@@ -229,6 +229,10 @@
     <Compile Include="Utilities\WebUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\tests\stock_symbols.json">
+      <Link>Media\stock_symbols.json</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Config\log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -246,7 +250,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\assets\files\ifc\" />
-    <Folder Include="Media\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StockAnalyzer.Models\StockAnalyzer.Models.csproj">
