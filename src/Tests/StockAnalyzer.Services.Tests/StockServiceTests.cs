@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace StockAnalyzer.Services.Tests
 {
     [TestFixture]
-    public class TestClass
+    public class StockServiceTests
     {
         [Test]
         public void TestMethod()
