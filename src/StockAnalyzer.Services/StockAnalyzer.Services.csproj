@@ -45,5 +45,11 @@
     <Compile Include="Contracts\IStockService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StockAnalyzer.Repositories\StockAnalyzer.Repositories.csproj">
+      <Project>{8B7835CB-FD76-4474-B3B8-E88742009117}</Project>
+      <Name>StockAnalyzer.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
