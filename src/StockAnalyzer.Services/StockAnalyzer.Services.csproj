@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,10 +49,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StockAnalyzer.Entities\StockAnalyzer.Entities.csproj">
+      <Project>{8385AB2C-1A97-4985-B5DC-24EDE03984E2}</Project>
+      <Name>StockAnalyzer.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StockAnalyzer.Models\StockAnalyzer.Models.csproj">
+      <Project>{EC4C27A9-A198-4176-8D68-986B1DEA22C5}</Project>
+      <Name>StockAnalyzer.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StockAnalyzer.Repositories\StockAnalyzer.Repositories.csproj">
       <Project>{8B7835CB-FD76-4474-B3B8-E88742009117}</Project>
       <Name>StockAnalyzer.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StockAnalyzer\StockAnalyzer.Framework.csproj">
+      <Project>{BCDAA140-6947-4301-8C57-FD69722755AB}</Project>
+      <Name>StockAnalyzer.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

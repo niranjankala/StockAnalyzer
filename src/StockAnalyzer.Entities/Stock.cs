@@ -14,6 +14,6 @@ namespace StockAnalyzer.Entities
         public string exchange { get; set; }
         public string exchangeShortName { get; set; }
         public string type { get; set; }
-        public DateTime date { get; set; }
+        
     }
 }

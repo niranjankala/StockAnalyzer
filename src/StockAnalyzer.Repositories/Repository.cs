@@ -71,6 +71,11 @@ namespace StockAnalyzer.Repositories
         {
             return dbset.ToList();
         }
+
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await dbset.ToListAsync();
+        }
         public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
         {
             return dbset.Where(where).ToList();
@@ -196,6 +201,6 @@ namespace StockAnalyzer.Repositories
             }
 
             return dataTable;
-        }
+        }       
     }
 }

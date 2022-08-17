@@ -18,8 +18,8 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
         private string folderPath;
         private IFileStore storageProvider;
         
-        [OneTimeSetUp]
-        public void Setup()
+        [SetUp]
+        public void Init()
         {
             folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Media");
             filePath = folderPath + "\\testfile.txt";
@@ -49,6 +49,22 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
 
             storageProvider = new FileSystemStore(folderPath);
 
+        }
+
+        [TearDown]
+        public void Term()
+        {
+            try
+            {
+                if (Directory.Exists(folderPath))
+                    Directory.Delete(folderPath, true);
+            }
+            catch (IOException)
+            {
+                // if a system handle is still active give some time to release it
+                Thread.Sleep(0);
+                Directory.Delete(folderPath, true);
+            }
         }
 
         [Test]
@@ -245,22 +261,6 @@ namespace StockAnalyzer.Tests.FileStorage.FileSystem
             // Assert
             Assert.True(false);
 
-        }
-        
-        [OneTimeTearDown]
-        public void Dispose()
-        {
-            try
-            {
-                if(Directory.Exists(folderPath))
-                    Directory.Delete(folderPath, true);
-            }
-            catch (IOException)
-            {
-                // if a system handle is still active give some time to release it
-                Thread.Sleep(0);
-                Directory.Delete(folderPath, true);
-            }
         }
 
         private async Task<IEnumerable<IFileStoreEntry>> ListFolders(string path)

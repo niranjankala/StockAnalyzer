@@ -1,8 +1,11 @@
 ﻿using Newtonsoft.Json;
+using StockAnalyzer.Logging;
 using StockAnalyzer.Models;
+using StockAnalyzer.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -17,51 +20,46 @@ namespace StockAnalyzer.WebApi.Controllers
     [RoutePrefix("api/stocks")]
     public class StocksController : BaseController
     {
-        //readonly IProjectService stockService;        
+        readonly IStockService _stockService;
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProjectsController"/> class.
+        /// Initializes a new instance of the <see cref="stocksController"/> class.
         /// </summary>
         /// <param name="stockService">The stock service instance.</param>       
         /// <param name="logger">An ILogger instance to log</param>
-        //public StocksController(IProjectService stockService,
-        //    ILogger logger)
-        //{
-        //    this.stockService = stockService;      
-        //}
+        public StocksController(IStockService stockService,
+            ILogger logger)
+        {
+            this._stockService = stockService;
+        }
         /// <summary>
         /// Get all stocks
         /// </summary>
         /// <returns>List of all stocks</returns>
-        //[HttpGet]
-        //public async Task<List<Project>> GetProjects()
-        //{
-        //    return await (Task<List<Project>>.Run(() => stockService.GetProjects()));
-        //}
+        [HttpGet]
+        public async Task<List<StockModel>> GetStockTickerSymbols()
+        {
+            return (await _stockService.GetStockTickerSymbols()).OrderBy(p => p.Symbol).ToList();
+            
+        }
         /// <summary>
-        /// Get stock using id
+        /// Get stock using ticker symbol and date
         /// </summary>
-        /// <param name="stockId">Project Id</param>
-        /// <returns>The stock with the given ID.</returns>
-        //[HttpGet]
-        //[Route("{stockId}")]
-        //public async Task<Project> GetProject(string stockId)
-        //{
-        //    return await (Task<Project>.Run(() =>
-        //    {
-        //        Project stock = stockService.GetProject(stockId);
-        //        //if (stock != null)
-        //        //{
-        //        //    string path = $"{PathHelper.GetRootedPath(ApiConfiguration.ProjectsLocalStoragePath)}\\{stockId}\\Residential.json";
-        //        //    if (File.Exists(path))
-        //        //    {
-        //        //        stock.ProjectData = Convert.ToString(JsonConvert.DeserializeObject(File.ReadAllText(path)));
-        //        //    }
-        //        //}
-        //        return stock;
-        //    }
-        //    ));
-        //}
+        /// <param name="tickerSymbol">Stock ticker symbol</param>
+        /// <param name="date"></param>
+        /// <returns>The stock with the given ticker symbol.</returns>
+        [HttpGet]
+        [Route("{tickerSymbol}")]
 
-        
+        public async Task<StockModel> GetStock(string tickerSymbol, DateTime? date)
+        {
+
+            StockModel stock = await _stockService.GetStock(tickerSymbol, date ?? DateTime.MinValue);
+            if (stock == null)
+            {
+                string message = date.HasValue ? "Stock does not exists for the given date" : "Stock does not exists";
+                throw new KeyNotFoundException(message);
+            }
+            return stock;
+        }
     }
 }

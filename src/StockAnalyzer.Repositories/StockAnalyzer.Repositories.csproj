@@ -70,6 +70,10 @@
       <Project>{8385AB2C-1A97-4985-B5DC-24EDE03984E2}</Project>
       <Name>StockAnalyzer.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StockAnalyzer\StockAnalyzer.Framework.csproj">
+      <Project>{BCDAA140-6947-4301-8C57-FD69722755AB}</Project>
+      <Name>StockAnalyzer.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

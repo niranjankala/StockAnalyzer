@@ -18,6 +18,7 @@ namespace StockAnalyzer.Repositories
         T GetById(string Id);
         T Get(Expression<Func<T, bool>> where);
         IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAllAsync();
         IEnumerable<T> GetMany(Expression<Func<T, bool>> where);
     }
 }

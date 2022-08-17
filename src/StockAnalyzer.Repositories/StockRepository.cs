@@ -1,16 +1,20 @@
 ﻿using StockAnalyzer.Data;
 using StockAnalyzer.Entities;
+using StockAnalyzer.FileStorage;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Pipes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace StockAnalyzer.Repositories
 {
     public class StockRepository : Repository<Stock>, IStockRepository
     {
-        private MyDBContext dataContext;
+        private MyDBContext _dataContext;        
         protected new IDatabaseFactory DatabaseFactory
         {
             get;
@@ -25,7 +29,7 @@ namespace StockAnalyzer.Repositories
 
         protected new MyDBContext DataContext
         {
-            get { return dataContext ?? (dataContext = DatabaseFactory.Get()); }
-        }
+            get { return _dataContext ?? (_dataContext = DatabaseFactory.Get()); }
+        }        
     }
 }
