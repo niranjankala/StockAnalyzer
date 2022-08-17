@@ -79,6 +79,9 @@
     <Compile Include="Utilities\WebUtilsTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\tests\stock_symbols.json">
+      <Link>Media\stock_symbols.json</Link>
+    </None>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -92,6 +95,7 @@
       <Name>StockAnalyzer.Framework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
