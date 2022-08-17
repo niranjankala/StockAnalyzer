@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Data", "Stock
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Repositories.Tests", "Tests\StockAnalyzer.Repositories.Tests\StockAnalyzer.Repositories.Tests.csproj", "{47C6887B-61CB-4983-B51C-EC399F7B569A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.API", "StockAnalyzer.API\StockAnalyzer.API.csproj", "{44B70931-1641-47F8-8B18-3C7AD1D5261A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{47C6887B-61CB-4983-B51C-EC399F7B569A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47C6887B-61CB-4983-B51C-EC399F7B569A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47C6887B-61CB-4983-B51C-EC399F7B569A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44B70931-1641-47F8-8B18-3C7AD1D5261A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44B70931-1641-47F8-8B18-3C7AD1D5261A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44B70931-1641-47F8-8B18-3C7AD1D5261A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44B70931-1641-47F8-8B18-3C7AD1D5261A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
