@@ -25,15 +25,15 @@ namespace StockAnalyzer.WebApi
                 .EnableSwagger(c =>
                     {
 
-                        c.SingleApiVersion("v1", "StockAnalyzer BimManager API");
+                        c.SingleApiVersion("v1", "StockAnalyzer API");
 
-                        c.IncludeXmlComments($@"{System.AppDomain.CurrentDomain.BaseDirectory}\bin\StockAnalyzer_BimManager_API.xml");
+                        c.IncludeXmlComments($@"{System.AppDomain.CurrentDomain.BaseDirectory}\bin\StockAnalyzer_API.xml");
                         c.DescribeAllEnumsAsStrings();
                         c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
                     })
                 .EnableSwaggerUi(c =>
                     {
-                        c.DocumentTitle("StockAnalyzer BimManager");
+                        c.DocumentTitle("StockAnalyzer API");
                         c.InjectStylesheet(thisAssembly, "StockAnalyzer.WebApi.Content.swagger.css");
                         c.EnableDiscoveryUrlSelector();
                     });

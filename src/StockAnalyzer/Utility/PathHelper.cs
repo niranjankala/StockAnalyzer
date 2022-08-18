@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace StockAnalyzer.Utils
+namespace StockAnalyzer.Utility
 {
     public static class PathHelper
     {

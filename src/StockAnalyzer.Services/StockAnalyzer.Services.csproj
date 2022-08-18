@@ -62,7 +62,7 @@
       <Name>StockAnalyzer.Repositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\StockAnalyzer\StockAnalyzer.Framework.csproj">
-      <Project>{BCDAA140-6947-4301-8C57-FD69722755AB}</Project>
+      <Project>{47FBC6E4-340C-4FEB-96F2-C2D49AC8C691}</Project>
       <Name>StockAnalyzer.Framework</Name>
     </ProjectReference>
   </ItemGroup>

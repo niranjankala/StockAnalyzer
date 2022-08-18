@@ -1,6 +1,5 @@
 ﻿using StockAnalyzer.Data;
 using StockAnalyzer.Entities;
-using StockAnalyzer.FileStorage;
 using System;
 using System.Collections.Generic;
 using System.IO;

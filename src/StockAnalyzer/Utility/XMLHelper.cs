@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace StockAnalyzer.Utils
+namespace StockAnalyzer.Utility
 {
     public class XMLHelper
     {
-        private static string GetXMLData(string fileName)
+        public static string GetStringFromXML(string fileName)
         {
             FileStream file = null;
             StreamReader sr = null;
@@ -40,7 +40,7 @@ namespace StockAnalyzer.Utils
         public static XmlDocument GetXMLDocumentFromFile(string fileName)
         {
             XmlDocument doc = new XmlDocument();
-            doc.LoadXml(GetXMLData(fileName));
+            doc.LoadXml(GetStringFromXML(fileName));
             //doc.LoadXml(fileName);
             return doc;
         }
@@ -173,6 +173,17 @@ namespace StockAnalyzer.Utils
                     memoryStream.Dispose();
                 }
             }
+        }
+
+        public static string GetStringFromXML(XmlDocument xmlDoc)
+        {
+            using (var stringWriter = new StringWriter())
+            using (var xmlTextWriter = XmlWriter.Create(stringWriter))
+            {
+                xmlDoc.WriteTo(xmlTextWriter);
+                xmlTextWriter.Flush();
+                return stringWriter.GetStringBuilder().ToString();
+            }           
         }
     }
 

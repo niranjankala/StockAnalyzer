@@ -135,7 +135,7 @@ $TargetDedicated = $Nodes;";
                 CloudJob job = batchClient.JobOperations.CreateJob();
                 job.Id = jobId;
                 //job.Id = Guid.NewGuid().ToString();
-                //job.DisplayName = $"Kcc-RR-Job-{DateTime.Now}";
+                //job.DisplayName = $"UniqueName-{DateTime.Now}";
 
                 // ToDo: Specify the pool
                 job.PoolInformation = new PoolInformation { PoolId = poolId };

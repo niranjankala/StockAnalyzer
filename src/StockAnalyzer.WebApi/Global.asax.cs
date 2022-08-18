@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using StockAnalyzer.Utils;
+using StockAnalyzer.Utility;
 
 namespace StockAnalyzer.WebApi
 {
