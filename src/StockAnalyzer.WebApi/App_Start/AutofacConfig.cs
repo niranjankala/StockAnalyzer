@@ -50,7 +50,7 @@ namespace StockAnalyzer.WebApi
             var assemblies = Directory.EnumerateFiles(baseDirectoryPath, "*.dll", SearchOption.TopDirectoryOnly)
                 .Where(filePath => Path.GetFileName(filePath).StartsWith("StockAnalyzer"))
                 .Select(Assembly.LoadFrom).Where(assemblyType =>
-                (assemblyType.FullName.StartsWith("StockAnalyzer") && !assemblyType.FullName.Contains("Log") &&
+                (assemblyType.FullName.StartsWith("StockAnalyzer") && !assemblyType.FullName.Contains("StockAnalyzer.Framework") &&
                 !assemblyType.FullName.Contains("StockAnalyzer.WebApi")
                 )).ToArray();
 

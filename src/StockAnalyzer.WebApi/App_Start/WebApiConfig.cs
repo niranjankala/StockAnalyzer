@@ -1,6 +1,6 @@
 ﻿using Autofac.Integration.WebApi;
 using StockAnalyzer.WebApi.Handler;
-//using StockAnalyzer.WebApi.Logger;
+using StockAnalyzer.WebApi.Logger;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 
@@ -19,10 +19,10 @@ namespace StockAnalyzer.WebApi
         public static void Register(HttpConfiguration config)
         {
 
-            //config.DependencyResolver = new AutofacWebApiDependencyResolver(AutofacConfig.Container);
-            //var logger = config.DependencyResolver.GetService(typeof(GlobalExceptionLogger));
-            // config.Services.Replace(typeof(IExceptionLogger), logger);
-            //config.Services.Replace(typeof(IExceptionHandler), new GenericExceptionHandler());
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(AutofacConfig.Container);
+            var logger = config.DependencyResolver.GetService(typeof(GlobalExceptionLogger));
+            config.Services.Replace(typeof(IExceptionLogger), logger);
+            config.Services.Replace(typeof(IExceptionHandler), new GenericExceptionHandler());
             // Web API routes
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
