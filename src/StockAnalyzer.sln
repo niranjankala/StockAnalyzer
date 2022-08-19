@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Repositories.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Framework", "StockAnalyzer\StockAnalyzer.Framework.csproj", "{47FBC6E4-340C-4FEB-96F2-C2D49AC8C691}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.WebApi", "StockAnalyzer.WebApi\StockAnalyzer.WebApi.csproj", "{14E3BE07-D026-4BC2-83B4-CA2CE9BE04F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.WebApi", "StockAnalyzer.WebApi\StockAnalyzer.WebApi.csproj", "{2CBD50E6-E20D-4F4D-9B68-E1597CCF6C3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,10 +73,10 @@ Global
 		{47FBC6E4-340C-4FEB-96F2-C2D49AC8C691}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47FBC6E4-340C-4FEB-96F2-C2D49AC8C691}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47FBC6E4-340C-4FEB-96F2-C2D49AC8C691}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14E3BE07-D026-4BC2-83B4-CA2CE9BE04F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14E3BE07-D026-4BC2-83B4-CA2CE9BE04F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14E3BE07-D026-4BC2-83B4-CA2CE9BE04F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14E3BE07-D026-4BC2-83B4-CA2CE9BE04F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CBD50E6-E20D-4F4D-9B68-E1597CCF6C3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CBD50E6-E20D-4F4D-9B68-E1597CCF6C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CBD50E6-E20D-4F4D-9B68-E1597CCF6C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CBD50E6-E20D-4F4D-9B68-E1597CCF6C3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
