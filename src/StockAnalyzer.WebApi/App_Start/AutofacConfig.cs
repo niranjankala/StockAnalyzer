@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using StockAnalyzer.FileStorage;
 
 namespace StockAnalyzer.WebApi
 {
@@ -43,7 +44,9 @@ namespace StockAnalyzer.WebApi
             if (!Directory.Exists(baseDirectoryPath))
                 baseDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
 
+            
             builder.RegisterModule(new LoggingModule());
+            builder.RegisterModule(new FileStoreModule());
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
             builder.RegisterType<GlobalExceptionLogger>().InstancePerLifetimeScope();
 

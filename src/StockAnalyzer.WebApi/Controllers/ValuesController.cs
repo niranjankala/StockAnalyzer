@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StockAnalyzer.Logging;
+using StockAnalyzer.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,6 +11,8 @@ namespace StockAnalyzer.WebApi.Controllers
 {
     public class ValuesController : ApiController
     {
+
+   
         // GET api/<controller>
         public IEnumerable<string> Get()
         {

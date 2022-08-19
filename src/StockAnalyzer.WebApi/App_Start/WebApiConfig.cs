@@ -18,7 +18,7 @@ namespace StockAnalyzer.WebApi
         /// <param name="config">The Http configuration object to configure.</param>
         public static void Register(HttpConfiguration config)
         {
-
+            config.EnableSystemDiagnosticsTracing();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(AutofacConfig.Container);
             var logger = config.DependencyResolver.GetService(typeof(GlobalExceptionLogger));
             config.Services.Replace(typeof(IExceptionLogger), logger);
