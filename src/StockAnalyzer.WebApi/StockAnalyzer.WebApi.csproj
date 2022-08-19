@@ -223,6 +223,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\log4net.config" />
+    <Content Include="..\..\tests\stock_symbols.json">
+      <Link>Media\stock_symbols.json</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
