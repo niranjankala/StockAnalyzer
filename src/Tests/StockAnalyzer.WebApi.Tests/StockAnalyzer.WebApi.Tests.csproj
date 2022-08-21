@@ -66,27 +66,47 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfigTests.cs" />
     <Compile Include="Controllers\StocksControllerTests.cs" />
+    <Compile Include="Handler\GenericExceptionHandlerTests.cs" />
+    <Compile Include="StocksTests.cs" />
+    <Compile Include="Utilities\WebUtilsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\tests\stock_symbols.json">
       <Link>Media\stock_symbols.json</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Handler\" />
-    <Folder Include="Utilities\" />
+    <ProjectReference Include="..\..\StockAnalyzer.Models\StockAnalyzer.Models.csproj">
+      <Project>{EC4C27A9-A198-4176-8D68-986B1DEA22C5}</Project>
+      <Name>StockAnalyzer.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\StockAnalyzer.Services\StockAnalyzer.Services.csproj">
+      <Project>{F92D03E2-7655-4970-9968-3AC65FDAC0B2}</Project>
+      <Name>StockAnalyzer.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\StockAnalyzer.WebApi\StockAnalyzer.WebApi.csproj">
+      <Project>{2cbd50e6-e20d-4f4d-9b68-e1597ccf6c3f}</Project>
+      <Name>StockAnalyzer.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\StockAnalyzer\StockAnalyzer.Framework.csproj">
+      <Project>{47FBC6E4-340C-4FEB-96F2-C2D49AC8C691}</Project>
+      <Name>StockAnalyzer.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

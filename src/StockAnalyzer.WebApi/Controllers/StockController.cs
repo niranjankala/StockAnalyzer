@@ -41,25 +41,25 @@ namespace StockAnalyzer.WebApi.Controllers
             return (await _stockService.GetStockTickerSymbols()).OrderBy(p => p.Symbol).ToList();
             
         }
-        ///// <summary>
-        ///// Get stock using ticker symbol and date
-        ///// </summary>
-        ///// <param name="tickerSymbol">Stock ticker symbol</param>
-        ///// <param name="date"></param>
-        ///// <returns>The stock with the given ticker symbol.</returns>
-        //[HttpGet]
-        //[Route("{tickerSymbol}")]
+        /// <summary>
+        /// Get stock using ticker symbol and date
+        /// </summary>
+        /// <param name="tickerSymbol">Stock ticker symbol</param>
+        /// <param name="date"></param>
+        /// <returns>The stock with the given ticker symbol.</returns>
+        [HttpGet]
+        [Route("{tickerSymbol}")]
 
-        //public async Task<StockModel> GetStock(string tickerSymbol, DateTime? date)
-        //{
+        public async Task<StockModel> GetStock(string tickerSymbol, DateTime? date)
+        {
 
-        //    StockModel stock = await _stockService.GetStock(tickerSymbol, date ?? DateTime.MinValue);
-        //    if (stock == null)
-        //    {
-        //        string message = date.HasValue ? "Stock does not exists for the given date" : "Stock does not exists";
-        //        throw new KeyNotFoundException(message);
-        //    }
-        //    return stock;
-        //}
+            StockModel stock = await _stockService.GetStock(tickerSymbol, date ?? DateTime.MinValue);
+            if (stock == null)
+            {
+                string message = date.HasValue ? "Stock does not exists for the given date" : "Stock does not exists";
+                throw new KeyNotFoundException(message);
+            }
+            return stock;
+        }
     }
 }
