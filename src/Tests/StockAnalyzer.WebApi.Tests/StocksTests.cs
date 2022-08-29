@@ -23,7 +23,7 @@ namespace StockAnalyzer.WebApi.Tests
     [TestFixture]
     public class ProjectsTests
     {
-        private StockModel stock;
+        private List<StockModel> stocksData;
         Mock<IStockService> repoStockServiceMock;
         StocksController controller;
 
@@ -32,7 +32,7 @@ namespace StockAnalyzer.WebApi.Tests
         public void SetUp()
         {
             repoStockServiceMock = new Mock<IStockService>();
-            stock = GetStocks().Result.First();
+            stocksData = GetStocks();
             controller = new StocksController(repoStockServiceMock.Object);
         }
 
@@ -41,7 +41,7 @@ namespace StockAnalyzer.WebApi.Tests
         {
             // Arrange
             repoStockServiceMock.Setup(repo => repo.GetStockTickerSymbols())
-                .Returns(GetStocks());
+                .Returns(GetStocksAsync());
             SetupControllerForTests(controller, HttpMethod.Get);
             //Act
             var stocks = controller.GetStockTickerSymbols().Result;
@@ -51,18 +51,87 @@ namespace StockAnalyzer.WebApi.Tests
             Assert.AreEqual(43184, stocks.Count);
         }
 
+        [Test]
+        public void GetStock_WithTickerSymbolAndDate_ReturnsARecentStock()
+        {
+            // Arrange
+            DateTime searchDate = DateTime.Today;
+            string tickerSymbol = "CMCSA";
+            repoStockServiceMock.Setup(repo => repo.GetStock(tickerSymbol, searchDate))
+                .Returns(FindStock(tickerSymbol, searchDate));
+            SetupControllerForTests(controller, HttpMethod.Get);
+            //Act
+            StockModel response = controller.GetStock(tickerSymbol, searchDate).Result;
+            // Assert
+            Assert.IsNotNull(response);
+            Assert.IsInstanceOf(typeof(StockModel), response);
+        }
+
+        [Test]
+        public void GetStock_WithTickerSymbolAndWithoutDate_ReturnsARecentStock()
+        {
+            // Arrange
+            DateTime searchDate = DateTime.MinValue;
+            string tickerSymbol = "CMCSA";
+            repoStockServiceMock.Setup(repo => repo.GetStock(tickerSymbol, searchDate))
+                .Returns(FindStock(tickerSymbol, searchDate));
+            SetupControllerForTests(controller, HttpMethod.Get);
+            //Act
+            StockModel response = controller.GetStock(tickerSymbol, searchDate).Result;
+            // Assert
+            Assert.IsNotNull(response);
+            Assert.IsInstanceOf(typeof(StockModel), response);
+        }
+        [Test]
+
+        public void GetStock_WithTickerSymbolAndWithNotExistingDate_ThrowException()
+        {
+            // Arrange
+            DateTime searchDate = DateTime.Today.AddDays(-1);
+            string tickerSymbol = "CMCSA";
+            repoStockServiceMock.Setup(repo => repo.GetStock(tickerSymbol, searchDate))
+                 .Returns(FindStock(tickerSymbol, searchDate));
+            SetupControllerForTests(controller, HttpMethod.Get);
+            //Act
+            Assert.ThrowsAsync<KeyNotFoundException>(async () =>
+               {
+                   StockModel response = await controller.GetStock(tickerSymbol, searchDate);
+               });
+
+        }
+        [Test]
+
+        public void GetStock_WithNotExistingTickerSymbolAndWithExistingDate_ThrowException()
+        {
+            // Arrange
+            DateTime searchDate = DateTime.Today;
+            string tickerSymbol = "ABCD";
+            repoStockServiceMock.Setup(repo => repo.GetStock(tickerSymbol, searchDate))
+                 .Returns(FindStock(tickerSymbol, searchDate));
+            SetupControllerForTests(controller, HttpMethod.Get);
+            //Act
+            Assert.ThrowsAsync<KeyNotFoundException>(async () =>
+            {
+                StockModel response = await controller.GetStock(tickerSymbol, searchDate);
+            });
+
+        }
+
         //[Test]
-        //public void GetProject_WithProjectId_ReturnsProject()
+        //public void Get2D_WithInvalidProjectid_ThrowFileNotFoundException()
         //{
-        //    // Arrange
-        //    repoProjectMock.Setup(repo => repo.GetProject(stock.ProjectId.ToString()))
-        //        .Returns(stock);
+        //    var parameters = new ViewParameters
+        //    {
+        //        ProjectId = stock.ProjectId.ToString()
+        //    };
+        //    repoBimModelMock.Setup(repo => repo.CreateSVGFile(stock.ProjectId.ToString(), parameters))
+        //        .Throws<FileNotFoundException>();
         //    SetupControllerForTests(controller, HttpMethod.Get);
         //    //Act
-        //    Project response = controller.GetProject(stock.ProjectId.ToString()).Result;
-        //    // Assert
-        //    Assert.IsNotNull(response);
-        //    Assert.IsInstanceOf(typeof(Project), response);
+        //    Assert.ThrowsAsync<FileNotFoundException>(async () =>
+        //    {
+        //        await controller.Get2D(parameters);
+        //    });
         //}
 
 
@@ -203,34 +272,46 @@ namespace StockAnalyzer.WebApi.Tests
             controller.Request.Properties[HttpPropertyKeys.HttpConfigurationKey] = config;
             controller.Request.Properties.Add(HttpPropertyKeys.HttpRouteDataKey, routeData);
         }
-        Task<List<StockModel>> GetStocks()
+
+
+        Task<List<StockModel>> GetStocksAsync()
         {
             return Task.Run<List<StockModel>>(() =>
             {
-                List<StockModel> stocks = new List<StockModel>();
+                return stocksData;
+            });
+        }
+        List<StockModel> GetStocks()
+        {
+            List<StockModel> stocks = new List<StockModel>();
 
-                var mediaFilePath = PathHelper.GetRootedPath("Media\\stock_symbols.json");                
+            var mediaFilePath = PathHelper.GetRootedPath("Media\\stock_symbols.json");
 
-                if (File.Exists(mediaFilePath))
+            if (File.Exists(mediaFilePath))
+            {
+                string json = File.ReadAllText(mediaFilePath);
+                if (!string.IsNullOrEmpty(json))
                 {
-                    string json = File.ReadAllText(mediaFilePath);
-                    if (!string.IsNullOrEmpty(json))
-                    {
-                        stocks = JsonConvert.DeserializeObject<List<StockModel>>(json);
-                    }
+                    stocks = JsonConvert.DeserializeObject<List<StockModel>>(json);
                 }
-                return stocks;
-                //return stocks.Select(p => new StockModel()
-                //{
-                //    Symbol = p.symbol,
-                //    Name = p.name,
-                //    Price = p.price,
-                //    Exchange = p.exchange,
-                //    ExchangeShortName = p.exchangeShortName,
-                //    Type = p.type
-                //}).ToList();
+            }
+            return stocks;
+        }
+        Task<StockModel> FindStock(string tickerSymbol, DateTime searchDate)
+        {
+            return Task.Run<StockModel>(() =>
+            {
+                if (searchDate == DateTime.MinValue)
+                {
+                    return stocksData.FirstOrDefault(f => f.Symbol == tickerSymbol);
+                }
+                else
+                {
+                    return stocksData.FirstOrDefault(f => f.Symbol == tickerSymbol && f.Date == searchDate);
+                }
+
             });
         }
     }
-    
+
 }
